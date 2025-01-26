@@ -71,12 +71,12 @@ class BookAlternate {
     this.author = author;
     this.ISBN = ISBN;
     this.numCopies = numCopies;
-  }
+  };
 
   // Getter
   get availability() {
     return this.getAvailability();
-  }
+  };
 
   // Method 
   getAvailability() {
@@ -86,15 +86,43 @@ class BookAlternate {
       return "Low stock";
     }
     return "In stock";
-  }
+  };
 
   // We see if a default param is set ... 
   // Then it will set that as value if no param is provided
   sell(numCopiesSold = 1) {
     this.numCopies -= numCopiesSold;
-  }
+  };
   
   restock(numCopiesStocked = 5) {
     this.numCopies += numCopiesStocked;
-  }
-}
+  };
+};
+
+// Note that the original code involved working with prototypes
+// Because functions are also objects ... 
+
+// IDE also notes that this cna be converted to a class - highlighting best practice...
+function bookPrototype(title, author, ISBN, numCopies) {
+  this.title = title;
+  this.author = author;
+  this.ISBN = ISBN;
+  this.numCopies = numCopies;
+};
+
+// using prototype keywork we cna add functions
+bookPrototype.prototype.getAvailability = function() {
+  if(this.numCopies === 0) {
+    return 'Out of stock';
+  };
+
+  if(this.numCopies <10) {
+    return 'Low stock';
+  };
+
+  return 'In stock';
+};
+
+// Testing prototype version:
+const thingsFallApart = new bookPrototype('Things fall apart', 'Chinua Achebe', 321654987, 5);
+console.log("checking prototype: ", thingsFallApart.getAvailability());
