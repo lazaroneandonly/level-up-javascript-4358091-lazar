@@ -12,7 +12,8 @@
   <!-- To run this file right click the file in the navigation bar and select "Open with live server. Then open the developer tools in the browser and head to the console window."-->
 
   <!-- Use this element to render your menu -->
-  <ul id="menu"></ul>
+  <ul id="menu">
+  </ul>
 
   <script>
     const menu = [
@@ -31,10 +32,24 @@
       {
         name: "Tiramisu",
         isVegetarian: true
+      },
+      {
+        name: "testVeg",
+        isVegetarian: true
       }
     ]
-    // Write your code here
+    
+    // Here the content is filtered for vegetarian items
+    const menuNode = document.querySelector('#menu');
+    const vegetarianOptions = menu.filter(option => option.isVegetarian === true);
 
+    // Adding each filtered item as individual li elements and appended to menu element
+    vegetarianOptions.forEach(vegetarianItem => {
+      let listItem = document.createElement("li");
+      listItem.textContent = vegetarianItem.name;
+      menuNode.appendChild(listItem);
+    });
+      
   </script>
 </body>
 

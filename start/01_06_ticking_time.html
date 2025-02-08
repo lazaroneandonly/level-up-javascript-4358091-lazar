@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ticking Time</title>
+  <p>TIMER: </p>
+  <p class="display"></p>
 </head>
 
 <body>
@@ -15,7 +17,16 @@
   <div id="clock"></div>
 
   <script>
-    // Write your code here
+    // creating timer value
+    let timer = 0;
+
+    const display = document.querySelector(".display");
+    display.textContent = 0;
+    
+    setInterval(() => {
+      timer ++;
+      display.textContent = timer;
+    }, 1000);
     
   </script>
 </body>

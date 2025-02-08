@@ -30,4 +30,21 @@ class Book {
   }
 }
 
-// Write your code here
+// used extend keyword to inherit
+class TechnicalBookClass extends Book {
+  // inherits from previous class
+  constructor(title, author, ISBN, numCopies, edition ) {
+    super(title, author, ISBN, numCopies);
+    // new property added here
+    this.edition = edition;
+  };
+
+  // Getter
+  get getEdition() {
+    return `The curent verison of this book is ${this.edition}`;
+  }
+};
+
+const newBook = new TechnicalBookClass("new title", "new author", "newISBN", 1991, "NewEdition");
+console.log("checking", newBook.title);
+console.log("Checking edition func: ", newBook.getEdition);
